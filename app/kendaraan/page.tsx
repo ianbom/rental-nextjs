@@ -3,7 +3,6 @@ import Search from "@/components/search";
 import KendaraanTable from "@/kendaraan_components/kendaraan-table"
 import CreateKendaraan from "./create/page";
 import { CreateKendaraanButton } from "@/kendaraan_components/button";
-import { clerkMiddleware } from "@clerk/nextjs/server";
 const KendaraanPage = ({
   searchParams }: {
     searchParams?: {
