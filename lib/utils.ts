@@ -1,20 +1,20 @@
-export const formatDate = (dateStr: String) => {
-    const date = new Date(dateStr);
-    const formatter = new Intl.DateTimeFormat("id-ID", { 
-        dateStyle: "medium", 
-        timeStyle: "short", 
-    }) ; 
-    return formatter.format(date);
-} 
+export const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  const formatter = new Intl.DateTimeFormat("id-ID", { 
+      dateStyle: "medium", 
+      timeStyle: "short", 
+  }); 
+  return formatter.format(date);
+};
 
 // Pastikan fungsi ini tersedia di file utils atau file terpisah
-export const formatCurrency = (value) => {
-    return new Intl.NumberFormat('id-ID', {
+export const formatCurrency = (value: number) => {
+  return new Intl.NumberFormat('id-ID', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0,
-    }).format(value);
-  };
+  }).format(value);
+};
 
 
 
