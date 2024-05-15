@@ -3,7 +3,7 @@
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import Link from "next/link";
-import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
+import { IoAddSharp, IoArrowForward, IoPencil, IoTrashOutline } from "react-icons/io5";
 import Create from '@/image-components/create-image';
 
 
@@ -101,7 +101,7 @@ export const GoAdmin = () => {
             href="/admin"
             className="inline-flex items-center space-x-1 text-white bg-blue-700 hover:bg-blue-800 px-5 py-[9px] rounded-sm text-sm">
 
-            <IoAddSharp size={20} />
+            <IoArrowForward size={10} />
             Go Admin
         </Link>
     )

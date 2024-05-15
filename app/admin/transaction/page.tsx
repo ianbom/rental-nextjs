@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import Search from '../search';
 import TransactionTable from './transaction-table';
@@ -20,7 +21,7 @@ const TransactionPage = ({
             <div className="w-full mb-4">
                 <Search />
             </div>
-           <TransactionTable query={query} currentPage={currentPage}/>
+            <TransactionTable query={query} currentPage={currentPage} />
         </main>
     );
 
