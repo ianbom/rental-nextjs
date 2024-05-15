@@ -4,11 +4,11 @@ import Search from './search';
 import CustomerTable from './users-table';
 
 
-export default async function IndexPage({
+const IndexPage = ({
   searchParams
 }: {
   searchParams: { query: string; page: string };
-}) {
+}) => {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -25,3 +25,5 @@ export default async function IndexPage({
     </main>
   );
 }
+
+export default IndexPage;
