@@ -1,3 +1,4 @@
+"use client";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';

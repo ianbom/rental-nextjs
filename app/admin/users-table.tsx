@@ -1,3 +1,4 @@
+'use client';
 import { formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { getCustomer } from "@/lib/data";
