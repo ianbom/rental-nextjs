@@ -1,3 +1,5 @@
+"use client";
+
 import { GoAdmin } from "@/kendaraan_components/button";
 
 export default function Home() {
