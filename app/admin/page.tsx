@@ -4,7 +4,7 @@ import Search from './search';
 import CustomerTable from './users-table';
 
 
-export default function IndexPage({
+export default async function IndexPage({
   searchParams
 }: {
   searchParams: { query: string; page: string };
