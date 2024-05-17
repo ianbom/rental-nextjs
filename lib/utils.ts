@@ -1,3 +1,5 @@
+"use client";
+
 export const formatDate = (dateStr: any) => {
     const date = new Date(dateStr);
     const formatter = new Intl.DateTimeFormat("id-ID", { 

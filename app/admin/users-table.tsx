@@ -1,7 +1,6 @@
 "use client";
 import { formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
-import { getCustomer } from "@/lib/data";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
 import { useEffect, useState } from "react";
 
@@ -37,7 +36,9 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
     };
 
     fetchCustomers();
-  }, [query, currentPage]);
+  }, []);
+
+
 
   console.log(customers);
 

@@ -1,4 +1,4 @@
-"uce client"
+"uce client";
 import React from 'react'
 import Search from '../search';
 import VechileTable from './vechile-table';
