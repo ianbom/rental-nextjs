@@ -1,13 +1,40 @@
-'use client';
+"use client";
+import { useState, useEffect } from 'react';
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
-import { getKendaraan } from "@/lib/kendaraan/data";
 import Image from "next/image";
 
-const VechileTable = async ({ query, currentPage }: { query: string; currentPage: number; }) => {
+interface Kendaraan {
+  plat: string;
+  merk: string;
+  warna: string;
+  tahun: number;
+  jenis: { jenis: string };
+  cc: number;
+  harga_sewa: number;
+  status: boolean;
+  bahan_bakar: string;
+  foto: { image: string }[];
+  createdAt: Date;
+}
 
-  const kendaraan = await getKendaraan(query, currentPage)
+const VechileTable = ({ query, currentPage }: { query: string; currentPage: number; }) => {
+  const [kendaraan, setKendaraan] = useState<Kendaraan[]>([]);
+
+  useEffect(() => {
+    const fetchKendaraan = async () => {
+      try {
+        const response = await fetch(`/api/vechile?query=${query}&currentPage=${currentPage}`);
+        const data = await response.json();
+        setKendaraan(data);
+      } catch (error) {
+        console.error('Error fetching kendaraan:', error);
+      }
+    };
+
+    fetchKendaraan();
+  }, [query, currentPage]);
   console.log(kendaraan);
 
   return (

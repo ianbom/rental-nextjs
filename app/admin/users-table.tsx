@@ -1,13 +1,45 @@
-'use client';
+"use client";
 import { formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { getCustomer } from "@/lib/data";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
+import { useEffect, useState } from "react";
 
-const CustomerTable = async ({ query, currentPage }: { query: string; currentPage: number; }) => {
 
-  const customer = await getCustomer(query, currentPage)
-  console.log(customer);
+interface CustomerTableProps {
+  query: string;
+  currentPage: number;
+}
+interface Customer {
+  id: string;
+  name: string;
+  alamat: string;
+  hp: string;
+  nik: string;
+  createdAt: Date;
+
+}
+const CustomerTable: React.FC<CustomerTableProps> = ({
+  query,
+  currentPage,
+}) => {
+  const [customers, setCustomers] = useState<Customer[]>([]);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const response = await fetch(`/api/customer?query=${query}&currentPage=${currentPage}`);
+        const data = await response.json();
+        setCustomers(data);
+      } catch (error) {
+        console.error('Error fetching customers:', error);
+      }
+    };
+
+    fetchCustomers();
+  }, [query, currentPage]);
+
+  console.log(customers);
 
   return (
     <Table>
@@ -24,7 +56,7 @@ const CustomerTable = async ({ query, currentPage }: { query: string; currentPag
         </TableRow>
       </TableHeader>
       <TableBody>
-        {customer.map((cust, index) => (
+        {customers.map((cust, index) => (
           <TableRow key={cust.id}>
             <TableCell className="font-medium">{index + 1}</TableCell>
             <TableCell className="font-medium">{cust.name}</TableCell>

@@ -1,14 +1,16 @@
-'use client';
+"uce client"
 import React from 'react'
 import Search from '../search';
 import VechileTable from './vechile-table';
 
 const VechilePage = ({
-    searchParams
-}: {
-    searchParams: { query: string; page: string };
-}) => {
-
+    searchParams }: {
+        searchParams?: {
+            query?: string;
+            page?: string;
+        }
+    }
+) => {
     const query = searchParams?.query || "";
     const currentPage = Number(searchParams?.page) || 1;
 

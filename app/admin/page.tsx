@@ -1,5 +1,5 @@
-'use client';
 
+"use client";
 import Search from './search';
 import CustomerTable from './users-table';
 
