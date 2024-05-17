@@ -1,5 +1,6 @@
 'use client';
-
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

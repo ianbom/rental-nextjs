@@ -1,5 +1,7 @@
+"use client";
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
 export interface InputProps

@@ -1,4 +1,6 @@
 "use client";
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
 import Search from './search';
 import CustomerTable from './users-table';
 

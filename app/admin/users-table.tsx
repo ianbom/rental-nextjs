@@ -1,4 +1,6 @@
 "use client";
+import { PrismaClient } from '@prisma/client/edge'
+const prisma = new PrismaClient()
 import { formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
