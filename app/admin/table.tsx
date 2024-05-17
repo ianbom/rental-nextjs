@@ -1,6 +1,4 @@
 "use client";
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
 import React from 'react'
 import { formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";

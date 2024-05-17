@@ -1,6 +1,5 @@
 "use client";
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
+
 import { useState, useEffect } from 'react';
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";

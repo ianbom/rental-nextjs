@@ -1,6 +1,4 @@
 "use client";
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
 import { IoSearch } from "react-icons/io5";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 

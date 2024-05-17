@@ -1,6 +1,5 @@
-"uce client";
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
+"use client";
+
 import React from 'react'
 import Search from '../search';
 import VechileTable from './vechile-table';

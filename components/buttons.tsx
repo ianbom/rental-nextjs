@@ -1,6 +1,4 @@
 "use client";
-import { PrismaClient } from '@prisma/client/edge'
-const prisma = new PrismaClient()
 import Link from "next/link";
 import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 import { useFormStatus } from "react-dom";
