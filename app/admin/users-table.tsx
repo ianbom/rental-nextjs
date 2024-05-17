@@ -27,7 +27,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await fetch(`/api/customer?query=${query}&currentPage=${currentPage}`);
+        const response = await fetch(`/api/customer`);
         const data = await response.json();
         setCustomers(data);
       } catch (error) {
@@ -36,9 +36,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({
     };
 
     fetchCustomers();
-  }, []);
-
-
+  }, [query, currentPage]);
 
   console.log(customers);
 
