@@ -10,8 +10,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = env("postgres://default:SwgDUH7aql2u@ep-sparkling-flower-a1pug8w1-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15") // uses connection pooling
-  directUrl = env("postgres://default:SwgDUH7aql2u@ep-sparkling-flower-a1pug8w1-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require") // uses a direct connection
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model Contact {
