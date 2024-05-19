@@ -3,6 +3,10 @@
 import React from 'react'
 import Search from '../search';
 import VechileTable from './vechile-table';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/app/firebase/config';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const VechilePage = ({
     searchParams }: {
@@ -14,6 +18,23 @@ const VechilePage = ({
 ) => {
     const query = searchParams?.query || "";
     const currentPage = Number(searchParams?.page) || 1;
+    
+    const [user, loading] = useAuthState(auth);
+    const router = useRouter();
+    useEffect(() => {
+        if (!loading && !user) {
+          router.push('/sign-in');
+        }
+      }, [loading, user, router]);
+    
+      if (loading) {
+        return (
+          <div className="min-h-screen flex items-center justify-center bg-gray-900">
+            <p className="text-white">Loading...</p>
+          </div>
+        );
+      }
+      console.log(user);
 
     return (
         <main className="flex flex-1 flex-col p-4 md:p-6">

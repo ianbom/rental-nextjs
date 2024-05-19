@@ -5,6 +5,7 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
 import Image from "next/image";
+import Link from 'next/link';
 
 interface Kendaraan {
   plat: string;
@@ -26,7 +27,7 @@ const VechileTable = ({ query, currentPage }: { query: string; currentPage: numb
   useEffect(() => {
     const fetchKendaraan = async () => {
       try {
-        const response = await fetch(`/api/vechile?query=${query}&currentPage=${currentPage}`);
+        const response = await fetch(`/api/vechile/?query=${query}&currentPage=${currentPage}`);
         const data = await response.json();
         setKendaraan(data);
       } catch (error) {
@@ -60,7 +61,8 @@ const VechileTable = ({ query, currentPage }: { query: string; currentPage: numb
         {kendaraan.map((kendaraan, index) => (
           <TableRow key={kendaraan.plat}>
 
-            <TableCell className="font-medium">{kendaraan.plat}</TableCell>
+            <TableCell className="font-medium">
+              <Link href={`/admin/vechile/${kendaraan.plat}`}>{kendaraan.plat}</Link></TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.merk}</TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.warna}</TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.tahun}</TableCell>
