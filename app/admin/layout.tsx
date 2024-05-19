@@ -1,10 +1,9 @@
-
 import './globals.css';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon, VercelLogo, VehicleIcon } from '@/components/icons';
-
 import { NavItem } from './nav-item';
+import { LogoutButton } from './sign-out-button';
 
 export const metadata = {
   title: 'Next.js App Router + NextAuth + Tailwind CSS',
@@ -40,13 +39,16 @@ export default function RootLayout({
                   </NavItem>
                   <NavItem href="/admin/vechile">
                     <SettingsIcon className="h-4 w-4" />
-                    Vechile
+                    Vehicle
                   </NavItem>
                   <NavItem href="/admin/transaction">
                     <VercelLogo className="h-4 w-4" />
                     Transaction
                   </NavItem>
                 </nav>
+              </div>
+              <div className="border-t px-4 py-4">
+                <LogoutButton />  {/* Use the LogoutButton component here */}
               </div>
             </div>
           </div>
@@ -59,7 +61,6 @@ export default function RootLayout({
                 <Logo />
                 <span className="">ACME</span>
               </Link>
-            
             </header>
             {children}
           </div>

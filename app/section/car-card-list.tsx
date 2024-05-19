@@ -7,6 +7,7 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@
 import Image from "next/image";
 import { log } from "console";
 import Search from "../admin/search";
+import TransaksiForm from "../transaksi-components/transaksi-create";
 
 interface Kendaraan {
   plat: string;
@@ -27,6 +28,7 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
   const [showModal, setShowModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showFormModal, setShowFormModal] = useState(false);
 
   useEffect(() => {
     const fetchKendaraan = async () => {
@@ -61,15 +63,23 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
     setCurrentImageIndex((prevIndex) => (prevIndex === selectedImages.length - 1 ? 0 : prevIndex + 1));
   };
 
+  const handlePesanClick = () => {
+    setShowFormModal(true);
+  };
+
+  const handleCloseFormModal = () => {
+    setShowFormModal(false);
+  };
+
   return (
     <>
       {/* ... */}
-      
+
       <div className=" md:py-4 pl-24 pr-24">
-      <Search/>
+        <Search />
       </div>
       <section className="w-full grid grid-cols-1 gap-6 md:grid-cols-3 py-12 md:py-4 pl-24 pr-24">
-      
+
         {kendaraan.map((kendaraan, index) => (
           <div key={index} className="relative flex flex-col items-start gap-6 rounded-lg border-2 border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-gray-300 dark:border-gray-800 dark:bg-gray-950">
             <div className="flex flex-wrap gap-2">
@@ -88,7 +98,7 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
                 <h1 className="text-sm font-semibold">{kendaraan.status ? 'Tersedia' : 'Tidak Tersedia'}</h1>
               </div>
               {kendaraan.status && (
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded shadow-md dark:bg-gray-800">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded shadow-md dark:bg-gray-800" onClick={handlePesanClick}>
                   Pesan
                 </button>
               )}
@@ -112,6 +122,34 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
         ))}
       </section>
       {/* ... */}
+
+      {/* Form Modal */}
+      {showFormModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+            <button
+              className="absolute top-2 right-2 text-gray-700 bg-gray-200 rounded-full p-2 hover:bg-gray-300"
+              onClick={handleCloseFormModal}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <TransaksiForm />
+          </div>
+        </div>
+      )}
 
       {/* Modal */}
       {showModal && selectedImages.length > 0 && (
@@ -187,7 +225,9 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
             </div>
           </div>
         </div>
+
       )}
+
     </>
   );
 };

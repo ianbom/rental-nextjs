@@ -1,3 +1,4 @@
+"use client";
 import { formatDate, formatCurrency } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
 

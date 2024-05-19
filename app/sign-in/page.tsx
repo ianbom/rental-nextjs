@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link'; // Import Link from next/link
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -62,6 +63,12 @@ const SignIn = () => {
           </button>
         </form>
         {error && <p className="mt-4 text-red-500">{error.message}</p>}
+        <p className="mt-4 text-gray-400">
+          Dont have an account? 
+          <Link href="/sign-up" className="text-blue-500 hover:underline">
+            Sign up
+          </Link>
+        </p>
       </div>
     </div>
   );

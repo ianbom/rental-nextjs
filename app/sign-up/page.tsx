@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
+import Link from 'next/link';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -60,6 +61,12 @@ const Signup = () => {
           </button>
         </form>
         {error && <p className="mt-4 text-red-500">{error.message}</p>}
+        <p className="mt-4 text-gray-400">
+          Already have account? 
+          <Link href="/sign-in" className="text-blue-500 hover:underline">
+              Sign-in
+          </Link>
+        </p>
       </div>
     </div>
   );
