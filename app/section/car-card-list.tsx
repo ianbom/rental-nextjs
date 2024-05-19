@@ -6,6 +6,7 @@ import { EditButton, DeleteButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
 import Image from "next/image";
 import { log } from "console";
+import Search from "../admin/search";
 
 interface Kendaraan {
   plat: string;
@@ -63,7 +64,12 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
   return (
     <>
       {/* ... */}
-      <section className="w-full grid grid-cols-1 gap-6 md:grid-cols-4 py-12 md:py-24 pl-24 pr-24">
+      
+      <div className=" md:py-4 pl-24 pr-24">
+      <Search/>
+      </div>
+      <section className="w-full grid grid-cols-1 gap-6 md:grid-cols-3 py-12 md:py-4 pl-24 pr-24">
+      
         {kendaraan.map((kendaraan, index) => (
           <div key={index} className="relative flex flex-col items-start gap-6 rounded-lg border-2 border-gray-200 bg-white p-6 shadow-sm transition-all hover:border-gray-300 dark:border-gray-800 dark:bg-gray-950">
             <div className="flex flex-wrap gap-2">

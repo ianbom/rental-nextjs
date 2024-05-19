@@ -10,6 +10,7 @@ import { log } from "console";
 import CarCardList from "./car-card-list";
 import Footer from "./footer";
 
+
 interface Kendaraan {
     plat: string;
     merk: string;
@@ -38,6 +39,7 @@ const Section3 = ({
     return (
         <>
             <Navbar />
+            
             <CarCardList query={query} currentPage={currentPage} />
             <Footer/>
         </>

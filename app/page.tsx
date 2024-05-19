@@ -8,6 +8,7 @@ export default function Home() {
     <h1>Welcome To HomePage</h1>
         <h1>Langsung tembak route aja /admin</h1>
         <GoAdmin/>
+        <h1>Route customer /section</h1>
     </>
     
   )
