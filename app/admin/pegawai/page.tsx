@@ -1,8 +1,14 @@
 import React from 'react'
+import PegawaiTable from './table-pegawai'
 
-const PegawaiPage = () => {
+const PegawaiPage = ({ searchParams }: { searchParams: { query: string; page: string } }) => {
+
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
   return (
-    <div>PegawaiPage</div>
+    <div>
+      <PegawaiTable query={query} currentPage={currentPage} />
+    </div>
   )
 }
 

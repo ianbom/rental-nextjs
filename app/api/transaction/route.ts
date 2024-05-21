@@ -77,12 +77,6 @@ const TransaksiSchema = z.object({
     }),
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 
 export const POST = async (req: NextRequest) => {
   if (req.method !== 'POST') {

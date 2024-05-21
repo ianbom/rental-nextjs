@@ -54,11 +54,7 @@ const KendaraanSchema = z.object({
   jenisKendaraan: z.string(),
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+
 
 export const POST = async (req: NextRequest) => {
   if (req.method !== 'POST') {
