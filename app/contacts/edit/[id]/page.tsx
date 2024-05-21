@@ -1,4 +1,4 @@
-import { EditButton } from "@/components/buttons"
+
 import UpdateForm from "@/components/edit-form"
 import { getContactsById } from "@/lib/data"
 import { notFound } from "next/navigation";

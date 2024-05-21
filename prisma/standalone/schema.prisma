@@ -1,0 +1,104 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "standalone"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Customer {
+  id        String      @id @default(cuid())
+  name      String
+  alamat    String
+  hp        String
+  nik       String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  transaksi Transaksi[]
+}
+
+model Kendaraan {
+  plat        String   @id
+  merk        String
+  warna       String
+  tahun       String
+  bahan_bakar String
+  cc          Int
+  harga_sewa  Decimal
+  status      Boolean
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  jenisKendaraan String
+  jenis          Jenis  @relation(fields: [jenisKendaraan], references: [id])
+
+  foto      Foto[]
+  transaksi Transaksi[]
+}
+
+model Transaksi {
+  transaksiId      String    @id @default(cuid())
+  kendaraan        Kendaraan @relation(fields: [kendaraan_plat], references: [plat])
+  kendaraan_plat   String
+  customer         Customer  @relation(fields: [customer_id], references: [id])
+  customer_id      String
+  tgl_mulai_sewa   DateTime
+  tgl_selesai_sewa DateTime
+  total_harga      Decimal   @default(0)
+  deskripsi        String
+  url_foto         String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Foto {
+  image_id String @id @default(cuid())
+  title    String
+  image    String
+
+  kendaraan_plat String    @default("")
+  kendaraan      Kendaraan @relation(fields: [kendaraan_plat], references: [plat])
+}
+
+model Jenis {
+  id    String @id @default(cuid())
+  jenis String
+
+  kendaraan  Kendaraan[]
+  created_at DateTime    @default(now())
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  username   String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Pegawai {
+  id     String @id @default(cuid())
+  nama   String
+  umur   Int
+  alamat String
+  no_hp  String
+  gaji   String
+}

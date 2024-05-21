@@ -3,7 +3,6 @@ import { updateContact } from "@/lib/actions"
 import { useFormState } from "react-dom"
 import { SubmitButton } from "@/components/buttons";
 import type { Contact } from "@prisma/client";
-import UpdateContact from "@/app/contacts/edit/[id]/page";
 
 const UpdateForm = ({ contact }: { contact: Contact }) => {
   const UpdateContactWithId = updateContact.bind(null, contact.id);

@@ -1,9 +1,8 @@
-"use server";
+
 import { z } from "zod";
 import { prisma } from "@/lib/prisma"; // impor prisma dari file lib/prisma.ts
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { error } from "console";
 import { put } from "@vercel/blob";
 
 
@@ -157,3 +156,22 @@ export const fetchKendaraanPlat = async () => {
   });
   return platKendaraan;
 };
+
+
+export const deleteKendaraan = async (plat: string) => {
+  try {
+    const response = await fetch(`/api/vechile/${plat}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      // Lakukan operasi tambahan setelah data berhasil dihapus, jika diperlukan
+      console.log('Data kendaraan berhasil dihapus');
+    } else {
+      console.error('Gagal menghapus data kendaraan');
+    }
+  } catch (error) {
+    console.error('Gagal menghapus data kendaraan:', error);
+  }
+};
+

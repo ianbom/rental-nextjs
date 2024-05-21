@@ -13,9 +13,6 @@ const userSchema = z.object({
     password: z.string().min(8, 'password required 8 character').max(100), 
 })
 
-
-
-
 export async function POST(req: Request) {
   try {
     const requestData = await req.json().catch((error) => { 
@@ -78,3 +75,4 @@ export async function POST(req: Request) {
     );
   }
 }
+

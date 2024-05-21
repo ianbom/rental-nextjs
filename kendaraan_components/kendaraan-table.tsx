@@ -1,5 +1,5 @@
 import { formatDate, formatCurrency } from "@/lib/utils";
-import { EditButton, DeleteButton } from "@/components/buttons";
+import { EditButton, DeleteButton, ButtonDeleteKendaraan } from "@/components/buttons";
 import { getKendaraan } from "@/lib/kendaraan/data";
 import Image from 'next/image';
 
@@ -63,7 +63,7 @@ const KendaraanTable = async ({
                         <td className="py-3 px-6">{formatDate(kendaraan.createdAt.toString())}</td>
                         <td className="flex justify-center gap-1 py-3">
                             <EditButton id="" />
-                            <DeleteButton id="" />
+                            <ButtonDeleteKendaraan plat={kendaraan.plat}/>
                         </td>
                     </tr>
                 )

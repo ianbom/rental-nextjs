@@ -17,7 +17,7 @@ interface Transaksi {
     tgl_mulai_sewa: Date;
     tgl_selesai_sewa: Date;
     deskripsi: string;
-    url_foto: string;
+    
     createdAt: Date;
     updatedAt: Date;
     total_harga: number;
@@ -54,7 +54,7 @@ const TransactionTable = ({ query, currentPage }: { query: string; currentPage: 
                     <TableHead className="hidden md:table-cell">Deskripsi</TableHead>
                     <TableHead className="hidden md:table-cell">Status</TableHead>
                     <TableHead className="hidden md:table-cell">Created_At</TableHead>
-                    <TableHead className="hidden md:table-cell">Bukti Transfer</TableHead>
+                    
                     <TableHead className="hidden md:table-cell">Action</TableHead>
                 </TableRow>
             </TableHeader>
@@ -71,17 +71,7 @@ const TransactionTable = ({ query, currentPage }: { query: string; currentPage: 
                         <TableCell className="hidden md:table-cell">{formatCurrency(transaction.total_harga)},00</TableCell>
                         <TableCell className="hidden md:table-cell">{transaction.deskripsi}</TableCell>
                         <TableCell className="hidden md:table-cell">{formatDate(transaction.createdAt.toString())}</TableCell>
-                        <TableCell className="hidden md:table-cell">
-                            <Image
-                                src={transaction.url_foto}
-                                alt={transaction.transaksiId}
-                                height={200}
-                                width={100}
-                                priority
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                className="rounded-t-md object-cover"
-                            />
-                        </TableCell>
+
                         <TableCell>
                             <div className="flex justify-center">
                                 <EditButton id="" />

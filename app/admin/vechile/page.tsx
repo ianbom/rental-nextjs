@@ -7,6 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { CreateKendaraanNewApi } from './create/button';
 
 const VechilePage = ({
     searchParams }: {
@@ -41,9 +42,11 @@ const VechilePage = ({
             <div className="flex items-center mb-8">
                 <h1 className="font-semibold text-lg md:text-2xl">Vechile List</h1>
             </div>
-            <div className="w-full mb-4">
-                <Search />
-            </div>
+            
+            <div className="flex items-center justify-between gap-1 mb-5">
+        <Search />
+        <CreateKendaraanNewApi />
+      </div>
             <VechileTable query={query} currentPage={currentPage} />
         </main>
     );
@@ -51,3 +54,4 @@ const VechilePage = ({
 }
 
 export default VechilePage
+

@@ -165,6 +165,7 @@ const TransaksiSchema = z.object({
     redirect("/transaksi");
   };
 
+  
 export const fetchCustomer = async () => {
     const customerName = await prisma.customer.findMany({
       select: { id: true, name: true } 

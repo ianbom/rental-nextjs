@@ -4,6 +4,7 @@ import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import { deleteContact } from "@/lib/actions";
+import { deleteKendaraan } from '../lib/kendaraan/actions';
 
 export const CreateButton = () => {
     return (
@@ -22,7 +23,19 @@ export const EditButton = ({ id }: { id: string }) => {
         <Link
             href={`/contacts/edit/${id}`}
             className="rounded-sm text-sm border p-1 hover:bg-gray-100">
-                
+
+            <IoPencil size={20} />
+
+        </Link>
+    )
+}
+
+export const EditKendaraanButton = ({ plat }: { plat: string }) => {
+    return (
+        <Link
+            href={`/admin/vechile/edit/${plat}`}
+            className="rounded-sm text-sm border p-1 hover:bg-gray-100">
+
             <IoPencil size={20} />
 
         </Link>
@@ -113,3 +126,22 @@ export const CreateTransaksiButton = () => {
     )
 }
 
+
+export const ButtonDeleteKendaraan = ({ plat }: { plat: string }) => {
+    const handleDeleteKendaraan = async () => {
+      try {
+        await deleteKendaraan(plat);
+      } catch (error) {
+        console.error('Gagal menghapus data kendaraan:', error);
+      }
+    };
+  
+    return (
+      <button
+        className="inline-flex items-center space-x-1 text-white bg-blue-700 hover:bg-blue-800 px-5 py-[9px] rounded-sm text-sm"
+        onClick={handleDeleteKendaraan}
+      >
+        <IoTrashOutline size={20} />
+      </button>
+    );
+  };

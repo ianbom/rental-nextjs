@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { Kendaraan } from "@prisma/client";
 
 export const getKendaraan = async (query: string, currentPage: number) => {
     try {
@@ -40,14 +41,26 @@ export const getKendaraan = async (query: string, currentPage: number) => {
 }
 
 
-export const getKendaraanByPlat = async (plat: string) => {
+export const getKendaraanByPlat = async (plat: string): Promise<Kendaraan> => {
     try {
-        const contact = await prisma.kendaraan.findUnique({
-            where: {plat}
-        }); 
-        return contact;
+      const kendaraan = await prisma.kendaraan.findUnique({ where: { plat } });
+      if (kendaraan) {
+        return {
+          plat: kendaraan.plat,
+          merk: kendaraan.merk,
+          warna: kendaraan.warna,
+          tahun: kendaraan.tahun,
+          bahan_bakar: kendaraan.bahan_bakar,
+          cc: kendaraan.cc,
+          harga_sewa: kendaraan.harga_sewa,
+          status: kendaraan.status,
+          jenisKendaraan: {select : {jenis: true}},
+              foto: {select : {image: true}},
+        };
+      }
+      return null;
     } catch (error) {
-        throw new Error('Failed to find data Kendaraan ');
+      throw new Error('Failed to find data Kendaraan');
     }
-}
+  };
 

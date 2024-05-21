@@ -1,11 +1,58 @@
 "use client";
-
+import { IoAddSharp, IoPencil, IoTrashOutline } from "react-icons/io5";
 import { useState, useEffect } from 'react';
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { EditButton, DeleteButton } from "@/components/buttons";
+import { ButtonDeleteKendaraan, EditButton } from "@/components/buttons";
 import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table';
 import Image from "next/image";
 import Link from 'next/link';
+import { EditKendaraanButton } from "./create/button";
+
+
+
+export const DeleteButton = ({ plat }: { plat: string }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  const handleDelete = async () => {
+    setIsDeleting(true);
+    setDeleteError(null);
+
+    try {
+      const response = await fetch(`/api/vechile/${plat}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message); // Display success message
+        // Optionally, you can add additional logic here, such as updating the UI or refreshing data
+      } else {
+        const errorData = await response.json();
+        setDeleteError(errorData.message || "Terjadi kesalahan saat menghapus kendaraan.");
+        console.log(errorData)
+      }
+    } catch (error) {
+      console.error("Error deleting vehicle:", error);
+      console.log(error)
+      setDeleteError("Terjadi kesalahan saat menghapus kendaraan.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  return (
+    <button
+      className="rounded-sm text-sm border p-1 hover:bg-gray-100"
+      onClick={handleDelete}
+      disabled={isDeleting}
+    >
+      <IoTrashOutline size={20} />
+      {isDeleting && <span className="ml-2">Menghapus...</span>}
+      {deleteError && <span className="ml-2 text-red-500">{deleteError}</span>}
+    </button>
+  );
+};
 
 interface Kendaraan {
   plat: string;
@@ -60,9 +107,9 @@ const VechileTable = ({ query, currentPage }: { query: string; currentPage: numb
       <TableBody>
         {kendaraan.map((kendaraan, index) => (
           <TableRow key={kendaraan.plat}>
-
             <TableCell className="font-medium">
-              <Link href={`/admin/vechile/${kendaraan.plat}`}>{kendaraan.plat}</Link></TableCell>
+              <Link href={`/admin/vechile/show/${kendaraan.plat}`}>{kendaraan.plat}</Link>
+            </TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.merk}</TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.warna}</TableCell>
             <TableCell className="hidden md:table-cell">{kendaraan.tahun}</TableCell>
@@ -83,8 +130,8 @@ const VechileTable = ({ query, currentPage }: { query: string; currentPage: numb
             <TableCell className="hidden md:table-cell">{formatDate(kendaraan.createdAt.toString())}</TableCell>
             <TableCell>
               <div className="flex justify-center">
-                <EditButton id="" />
-                <DeleteButton id="" />
+                <EditKendaraanButton plat={kendaraan.plat} />
+                <DeleteButton plat={kendaraan.plat} />
               </div>
             </TableCell>
           </TableRow>
