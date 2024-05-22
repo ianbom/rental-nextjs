@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
+
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const query = searchParams.get('query') || '';
@@ -59,5 +61,5 @@ export async function POST(request: Request) {
   }
 
   revalidatePath('/product')
-  return NextResponse.redirect('http://localhost:3000/product')
+  return NextResponse.redirect('/product')
 }

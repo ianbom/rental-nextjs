@@ -112,7 +112,7 @@ export const POST = async (req: NextRequest) => {
   }
 
   revalidatePath('/product/order');
-  return NextResponse.redirect('http://localhost:3000/product/order');
+  return NextResponse.redirect('/product/order');
 };
 
 

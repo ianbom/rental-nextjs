@@ -112,8 +112,8 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ error: 'Failed create kendaraan', errorMessage: error.message }, { status: 500 });
   }
 
-  revalidatePath('/kendaraan');
-  return NextResponse.redirect('http://localhost:3000/kendaraan');
+  revalidatePath('/admin/vechile');
+  return NextResponse.redirect('admin/vechile');
 };
 
 
@@ -185,8 +185,8 @@ export const PUT = async (req: NextRequest) => {
     return NextResponse.json({ error: 'Failed to update kendaraan', errorMessage: error.message }, { status: 500 });
   }
 
-  revalidatePath('/kendaraan');
-  return NextResponse.redirect('http://localhost:3000/kendaraan');
+  revalidatePath('/admin/vechile');
+  return NextResponse.redirect('/admin/vechile');
 };
 
 

@@ -66,7 +66,7 @@ export async function POST(request: Request){
   }
 
   revalidatePath('/admin/pegawai')
-  return NextResponse.redirect('http://localhost:3000/admin/pegawai')
+  return NextResponse.redirect('/admin/pegawai')
 }
 
 
