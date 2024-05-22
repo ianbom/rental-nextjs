@@ -12,17 +12,15 @@ const SignIn = () => {
   const router = useRouter();
   const [users] = useAuthState(auth);
 
-  const handleSignIn = async (e:any) => {
+  const handleSignIn = async (e: any) => {
     e.preventDefault(); // Prevent default form submission
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log('User signed in successfully:', res);
       setEmail('');
       setPassword('');
-      if(users?.email == "ianalebom@gmail.com"){
+      if (users?.email == "ianalebom@gmail.com") {
         router.push('/admin')
-      } if(users?.email != "ianalebom@gmail.com"){ 
-        router.push('/product')
       }
       
     } catch (error) {
@@ -70,7 +68,7 @@ const SignIn = () => {
         </form>
         {error && <p className="mt-4 text-red-500">{error.message}</p>}
         <p className="mt-4 text-gray-400">
-          Dont have an account? 
+          Dont have an account?
           <Link href="/sign-up" className="text-blue-500 hover:underline">
             Sign up
           </Link>

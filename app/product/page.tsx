@@ -46,7 +46,9 @@ const Section3 = ({
     useEffect(() => {
         if (!loading && !user) {
             router.push('/sign-in');
-        } 
+        } if (user?.email == "ianalebom@gmail.com") {
+            router.push('/admin')
+          }
     }, [loading, user, router]);
 
     if (loading) {
