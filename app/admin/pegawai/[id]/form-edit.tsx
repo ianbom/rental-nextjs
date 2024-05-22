@@ -32,7 +32,7 @@ const EditPegawai = () => {
         });
         setLoading(false);
       } catch (error) {
-        
+
         setLoading(false);
       }
     };
@@ -68,7 +68,7 @@ const EditPegawai = () => {
 
       router.push('/admin/pegawai');
     } catch (error) {
-    
+
     }
   };
 
@@ -77,59 +77,110 @@ const EditPegawai = () => {
 
   return (
     <div>
-      <style jsx>{`
-        input {
-          color: black;
-        }
-      `}</style>
-      <h1>Edit Pegawai</h1>
+      <h1 className="mb-5 text-2xl font-bold">Edit Pegawai</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nama</label>
-          <input
-            type="text"
-            name="nama"
-            value={formData.nama}
-            onChange={handleChange}
-          />
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <div className="mb-5">
+              <label htmlFor="nama" className="block text-sm font-medium text-white-900">
+                Nama
+              </label>
+              <input
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                name="nama"
+                id="nama"
+                value={formData.nama}
+                onChange={handleChange}
+                required
+              />
+              <div id="nama-error" aria-live="polite" aria-atomic="true">
+                <p className="mt-2 text-sm text-red-500">{}</p>
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <label htmlFor="alamat" className="block text-sm font-medium text-white-900">
+                Alamat
+              </label>
+              <input
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                name="alamat"
+                id="alamat"
+                value={formData.alamat}
+                onChange={handleChange}
+                required
+              />
+              <div id="alamat-error" aria-live="polite" aria-atomic="true">
+                <p className="mt-2 text-sm text-red-500">{}</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-5">
+              <label htmlFor="umur" className="block text-sm font-medium text-white-900">
+                Umur
+              </label>
+              <input
+                type="number"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                name="umur"
+                id="umur"
+                value={formData.umur}
+                onChange={handleChange}
+                required
+              />
+              <div id="umur-error" aria-live="polite" aria-atomic="true">
+                <p className="mt-2 text-sm text-red-500">{}</p>
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <label htmlFor="no_hp" className="block text-sm font-medium text-white-900">
+                No HP
+              </label>
+              <input
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                name="no_hp"
+                id="no_hp"
+                value={formData.no_hp}
+                onChange={handleChange}
+                required
+              />
+              <div id="no_hp-error" aria-live="polite" aria-atomic="true">
+                <p className="mt-2 text-sm text-red-500">{}</p>
+              </div>
+            </div>
+
+            <div className="mb-5">
+              <label htmlFor="gaji" className="block text-sm font-medium text-white-900">
+                Gaji
+              </label>
+              <input
+                type="text"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                name="gaji"
+                id="gaji"
+                value={formData.gaji}
+                onChange={handleChange}
+                required
+              />
+              <div id="gaji-error" aria-live="polite" aria-atomic="true">
+                <p className="mt-2 text-sm text-red-500">{}</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Alamat</label>
-          <input
-            type="text"
-            name="alamat"
-            value={formData.alamat}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Umur</label>
-          <input
-            type="number"
-            name="umur"
-            value={formData.umur}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>No HP</label>
-          <input
-            type="text"
-            name="no_hp"
-            value={formData.no_hp}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Gaji</label>
-          <input
-            type="text"
-            name="gaji"
-            value={formData.gaji}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Update</button>
+
+        <button
+          type="submit"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+        >
+          Update
+        </button>
       </form>
     </div>
   );

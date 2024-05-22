@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon, VercelLogo, VehicleIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { LogoutButton } from './sign-out-button';
+import { FaInfoCircle } from 'react-icons/fa';
 
 export const metadata = {
   title: 'Next.js App Router + NextAuth + Tailwind CSS',
@@ -28,7 +29,7 @@ export default function RootLayout({
                   href="/admin"
                 >
                   <Logo />
-                  <span className="">ACME</span>
+                  <span className="">Bom </span>
                 </Link>
               </div>
               <div className="flex-1 overflow-auto py-2">
@@ -45,6 +46,11 @@ export default function RootLayout({
                     <VercelLogo className="h-4 w-4" />
                     Transaction
                   </NavItem>
+                  <NavItem href="/admin/pegawai">
+                    <UsersIcon className="h-4 w-4" />
+                    Pegawai
+                  </NavItem>
+                  
                 </nav>
               </div>
               <div className="border-t px-4 py-4">

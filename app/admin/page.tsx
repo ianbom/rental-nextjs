@@ -17,6 +17,10 @@ const IndexPage = ({
   useEffect(() => {
     if (!loading && !user) {
       router.push('/sign-in');
+    } if (user?.email == "ianalebom@gmail.com") {
+      router.push('/admin')
+    } if (user?.email != "ianalebom@gmail.com") {
+      router.push('/product')
     }
   }, [loading, user, router]);
 

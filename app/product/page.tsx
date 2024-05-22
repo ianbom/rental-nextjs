@@ -11,6 +11,9 @@ import CarCardList from "./car-card-list";
 import Footer from "./footer";
 import { aiCar } from "../../components/component/ai-car";
 import LandingPage from "./landing";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase/config";
+import { useRouter } from "next/navigation";
 
 
 interface Kendaraan {
@@ -37,12 +40,28 @@ const Section3 = ({
     const query = searchParams?.query || "";
     const currentPage = Number(searchParams?.page) || 1;
 
+    const [user, loading] = useAuthState(auth);
+    const router = useRouter();
 
+    useEffect(() => {
+        if (!loading && !user) {
+            router.push('/sign-in');
+        } 
+    }, [loading, user, router]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-900">
+                <p className="text-white">Loading...</p>
+            </div>
+        );
+    }
+    console.log(user)
     return (
         <>
             <Navbar />
-            <LandingPage/>
-            <Footer/>
+            <LandingPage />
+            <Footer />
         </>
     );
 };

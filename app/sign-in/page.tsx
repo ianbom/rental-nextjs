@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link'; // Import Link from next/link
@@ -10,6 +10,7 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
   const router = useRouter();
+  const [users] = useAuthState(auth);
 
   const handleSignIn = async (e:any) => {
     e.preventDefault(); // Prevent default form submission
@@ -18,7 +19,12 @@ const SignIn = () => {
       console.log('User signed in successfully:', res);
       setEmail('');
       setPassword('');
-      router.push('/admin')
+      if(users?.email == "ianalebom@gmail.com"){
+        router.push('/admin')
+      } if(users?.email != "ianalebom@gmail.com"){ 
+        router.push('/product')
+      }
+      
     } catch (error) {
       console.error('Error signing in user:', error);
     }
