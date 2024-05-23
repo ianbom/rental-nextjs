@@ -1,4 +1,4 @@
-
+"use server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma"; // impor prisma dari file lib/prisma.ts
 import { revalidatePath } from "next/cache";
@@ -100,12 +100,7 @@ export const getImages = async () => {
   }
 }
 
-export const fetchVehicleTypes = async () => {
-  const vehicleTypes = await prisma.jenis.findMany({
-    select: { id: true, jenis: true } 
-  });
-  return vehicleTypes;
-};
+
 
 
 const ImageSchema = z.object({

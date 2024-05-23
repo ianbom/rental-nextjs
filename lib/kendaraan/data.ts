@@ -1,3 +1,4 @@
+"use server";
 import { prisma } from "@/lib/prisma";
 import { Kendaraan } from "@prisma/client";
 
@@ -40,6 +41,26 @@ export const getKendaraan = async (query: string, currentPage: number) => {
     }
 }
 
+// export const fetchVehicleTypes = async () => {
+//     const vehicleTypes = await prisma.jenis.findMany({
+//       select: { id: true, jenis: true } 
+//     });
+//     return vehicleTypes;
+//   };
+
+
+  export const fetchVehicleTypes = async () => {
+    try {
+        const vechileTypes = await prisma.jenis.findMany({ 
+            select: { 
+                id: true, jenis: true
+            }
+        }); return vechileTypes;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+  };
 
 // export const getKendaraanByPlat = async (plat: string): Promise<Kendaraan> => {
 //     try {

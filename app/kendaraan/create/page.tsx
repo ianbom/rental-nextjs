@@ -1,5 +1,5 @@
+"use client";
 import AddKendaraan from '@/kendaraan_components/create-kendaraan'
-
 
 const CreateKendaraan = () => {
     return (

@@ -1,3 +1,4 @@
+"use client";
 import { CreateButton } from "@/components/buttons";
 import Search from "@/components/search";
 import KendaraanTable from "@/kendaraan_components/kendaraan-table"
