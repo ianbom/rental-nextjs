@@ -38,24 +38,3 @@ export const EditTransaksi = ({ id }: { id: string }) => {
     )
 }
 
-export const SubmitTransaksiButton = ({ Label }: { Label: string }) => {
-    const { pending } = useFormStatus();
-    const className = clsx("text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-sm text-sm w-full px-5 py-3 text-center",
-        {
-            "opacity-50 cursor-progress": pending
-        }
-
-    );
-
-    return (
-        <button type="submit"
-            className={className}
-            disabled={pending}>
-            {Label === "save" ? (
-                <span> {pending ? " Saving... " : "Save"} </span>) :
-                (
-                    <span>{pending ? "Updating... " : "Update"}</span>
-                )}
-        </button>
-    );
-};

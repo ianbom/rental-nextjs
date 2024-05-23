@@ -1,8 +1,8 @@
 "use client";
 import { useFormState } from "react-dom"
 import { useEffect, useState } from "react";
-import { SubmitTransaksiButton } from "./button";
-import { fetchCustomer, fetchVehiclePlat, saveTransaksi } from "@/lib/transaksi/action";
+import { fetchCustomer, fetchVehiclePlat, saveNewTransaksi } from "@/lib/transaksi/action";
+import { SubmitTransaksiButton } from "@/kendaraan_components/button";
 
 const TransaksiForm = () => {
     const [jenisKendaraanOptions, setJenisKendaraanOptions] = useState<
@@ -12,7 +12,7 @@ const TransaksiForm = () => {
         { value: string; label: string }[]>([]);
     
 
-    const [state, formAction] = useFormState(saveTransaksi, null);
+    const [state, formAction] = useFormState(saveNewTransaksi, null);
 
 
     useEffect(() => {

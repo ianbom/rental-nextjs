@@ -40,7 +40,7 @@ export const fetchCustomer = async () => {
     }),
   });
   
-  export const saveTransaksi = async (prevState: any, formData: FormData) => {
+  export const saveNewTransaksi = async (prevState: any, formData: FormData) => {
     const validatedFields = TransaksiSchema.safeParse(Object.fromEntries(formData.entries()));
   
     if (!validatedFields.success) {
