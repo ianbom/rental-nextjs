@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import TransaksiTable from '../transaksi-components/transaksi-table'
 import Search from '@/components/search';

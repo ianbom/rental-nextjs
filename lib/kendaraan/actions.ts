@@ -170,3 +170,17 @@ export const deleteKendaraan = async (plat: string) => {
   }
 };
 
+
+
+export const fetchVehicleTypes = async () => {
+  try {
+      const vechileTypes = await prisma.jenis.findMany({ 
+          select: { 
+              id: true, jenis: true
+          }
+      }); return vechileTypes;
+  } catch (error) {
+      console.log(error);
+      return null;
+  }
+};

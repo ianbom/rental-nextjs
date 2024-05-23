@@ -1,5 +1,3 @@
-"use client";
-
 import { useFormStatus } from "react-dom";
 import clsx from "clsx";
 import Link from "next/link";

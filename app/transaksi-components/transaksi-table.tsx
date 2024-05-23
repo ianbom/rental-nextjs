@@ -1,7 +1,5 @@
-"use client";
 import { formatDate, formatCurrency } from "@/lib/utils";
 import { EditButton, DeleteButton } from "@/components/buttons";
-
 import {getTransaksi } from "@/lib/data";
 
 
