@@ -7,17 +7,28 @@ import { put } from "@vercel/blob";
 
 
 export const fetchCustomer = async () => {
-    const customerName = await prisma.customer.findMany({
-      select: { id: true, name: true } 
-    });
-    return customerName;
+    try {
+      const customerName = await prisma.customer.findMany({
+        select: { id: true, name: true } 
+      });
+      return customerName;
+    } catch (error) {
+      console.log(error)
+      return null
+    }
   };
 
   export const fetchVehiclePlat = async () => {
-    const kendaraanPlat = await prisma.kendaraan.findMany({
-      select: { plat: true, merk: true } 
-    });
-    return kendaraanPlat;
+    try {
+      const kendaraanPlat = await prisma.kendaraan.findMany({
+        select: { plat: true, merk: true } 
+      });
+      return kendaraanPlat;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+    
   };
 
   const TransaksiSchema = z.object({
@@ -65,6 +76,6 @@ export const fetchCustomer = async () => {
       return { message: "Failed to create Transaksi" };
     }
   
-    revalidatePath("/transaksi");
-    redirect("/transaksi");
+    revalidatePath("/transaksi/create");
+    redirect("/transaksi/create");
   };

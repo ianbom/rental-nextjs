@@ -1,5 +1,6 @@
-import TransaksiForm from '@/app/transaksi-components/transaksi-create'
 import React from 'react'
+import TransaksiForm from '@/app/transaksi-components/transaksi-create'
+
 
 const TransaksiCreate = ({ 
     searchParams 
