@@ -2,7 +2,6 @@ import { addKendaraan } from "@/lib/kendaraan/actions";
 import { useFormState } from "react-dom"
 import { SubmitKendaraan } from "../kendaraan_components/button"
 import { useEffect, useState } from "react";
-import { prisma } from "@/lib/prisma";
 import { fetchVehicleTypes } from "@/lib/kendaraan/actions";
 
 

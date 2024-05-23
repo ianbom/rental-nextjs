@@ -1,11 +1,8 @@
+"use client";
 import { useFormState } from "react-dom"
 import { useEffect, useState } from "react";
-import { prisma } from "@/lib/prisma";
-import { fetchCustomer, fetchVehiclePlat, saveTransaksi } from "@/lib/actions";
-import { error } from "console";
-import { SubmitTransaksiButton } from "@/components/buttons";
-
-
+import { SubmitTransaksiButton } from "./button";
+import { fetchCustomer, fetchVehiclePlat, saveTransaksi } from "@/lib/transaksi/action";
 
 const TransaksiForm = () => {
     const [jenisKendaraanOptions, setJenisKendaraanOptions] = useState<

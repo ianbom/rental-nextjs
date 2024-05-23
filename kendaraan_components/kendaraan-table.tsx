@@ -4,8 +4,6 @@ import { getKendaraan } from "@/lib/kendaraan/data";
 import Image from 'next/image';
 
 
-
-
 const KendaraanTable = async ({
     query, currentPage
 }: {

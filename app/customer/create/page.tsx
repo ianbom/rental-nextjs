@@ -1,5 +1,4 @@
 import CustomerForm from '@/app/customer-components/customer-create'
-import { SubmitCustomer } from '@/kendaraan_components/button'
 import React from 'react'
 
 const CustomerCreate = () => {

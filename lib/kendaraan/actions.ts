@@ -80,8 +80,8 @@ export const addKendaraan = async (prevState: any, formData: FormData) => {
     return { error: 'Failed create kendaraan', errorMessage: error.message };
   }
 
-  revalidatePath('/kendaraan');
-  redirect('/kendaraan');
+  revalidatePath('/kendaraan/create');
+  redirect('/kendaraan/create');
 };
 
 

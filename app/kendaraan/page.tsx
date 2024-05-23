@@ -1,8 +1,6 @@
 "use client";
-import { CreateButton } from "@/components/buttons";
 import Search from "@/components/search";
 import KendaraanTable from "@/kendaraan_components/kendaraan-table"
-import CreateKendaraan from "./create/page";
 import { CreateKendaraanButton } from "@/kendaraan_components/button";
 const KendaraanPage = ({
   searchParams }: {

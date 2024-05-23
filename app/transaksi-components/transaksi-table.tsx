@@ -1,8 +1,6 @@
 import { formatDate, formatCurrency } from "@/lib/utils";
-import { EditButton, DeleteButton } from "@/components/buttons";
-import {getTransaksi } from "@/lib/data";
-
-
+import { getTransaksi } from "@/lib/transaksi/data";
+import { DeleteTransaksi, EditTransaksi } from "./button";
 
 const TransaksiTable = async ({
     query, currentPage
@@ -43,8 +41,8 @@ const TransaksiTable = async ({
                         <td className="py-3 px-6">{transaksi.url_foto}</td>
                         <td className="py-3 px-6">{formatDate(transaksi.createdAt.toString())}</td>
                         <td className="flex justify-center gap-1 py-3">
-                            <EditButton id="" />
-                            <DeleteButton id="" />
+                            <EditTransaksi id="" />
+                            <DeleteTransaksi id="" />
                         </td>
                     </tr>
                 )

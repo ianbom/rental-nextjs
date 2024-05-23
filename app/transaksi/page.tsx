@@ -1,8 +1,7 @@
-"use client";
 import React from 'react'
 import TransaksiTable from '../transaksi-components/transaksi-table'
 import Search from '@/components/search';
-import { CreateTransaksiButton } from '@/components/buttons';
+import { CreateTransaksi } from '../transaksi-components/button';
 
 const TransaksiHome = ({ searchParams }: { searchParams?: { query?: string; page?: string; } }) => {
   const query = searchParams?.query || "";
@@ -13,7 +12,7 @@ const TransaksiHome = ({ searchParams }: { searchParams?: { query?: string; page
       <div className="flex flex-col items-center mb-5">
         <div className="flex items-center justify-between gap-1 mb-4">
           <Search />
-          <CreateTransaksiButton />
+          <CreateTransaksi />
         </div>
         <TransaksiTable query={query} currentPage={currentPage} />
       </div>

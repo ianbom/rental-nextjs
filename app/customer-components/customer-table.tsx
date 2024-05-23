@@ -3,8 +3,6 @@ import { EditButton, DeleteButton } from "@/components/buttons";
 import { getKendaraan } from "@/lib/kendaraan/data";
 import { getCustomer } from "@/lib/data";
 
-
-
 const CustomerTable = async ({
     query, currentPage
 }: {

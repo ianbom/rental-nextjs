@@ -1,4 +1,3 @@
-"use client";
 import TransaksiForm from '@/app/transaksi-components/transaksi-create'
 import React from 'react'
 
