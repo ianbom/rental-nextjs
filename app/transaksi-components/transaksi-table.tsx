@@ -38,7 +38,6 @@ const TransaksiTable = async ({
                         <td className="py-3 px-6">{formatDate(transaksi.tgl_selesai_sewa.toString())}</td>
                         <td className="py-3 px-6">{transaksi.total_harga}</td>
                         <td className="py-3 px-6">{transaksi.deskripsi}</td>
-                        <td className="py-3 px-6">{transaksi.url_foto}</td>
                         <td className="py-3 px-6">{formatDate(transaksi.createdAt.toString())}</td>
                         <td className="flex justify-center gap-1 py-3">
                             <p>Edit</p>

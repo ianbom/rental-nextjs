@@ -67,14 +67,6 @@ const TransaksiSchema = z.object({
   deskripsi: z.string().min(1),
   kendaraan_plat: z.string().min(1),
   customer_id: z.string().min(1),
-  url_foto: z.instanceof(File)
-    .refine((file) => file.size > 0, { message: 'Image is required' })
-    .refine((file) => file.size === 0 || file.type.startsWith('image/'), {
-      message: "Only images are allowed",
-    })
-    .refine((file) => file.size < 4000000, {
-      message: "Image size must be less than 4MB",
-    }),
 });
 
 
@@ -90,8 +82,6 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ errors: validatedFields.error.flatten().fieldErrors }, { status: 400 });
   }
 
-  const {url_foto} = validatedFields.data;
-    const { url } = await put(url_foto.name, url_foto, { access: "public", multipart: true });
 
   try {
     await prisma.transaksi.create({ 
@@ -101,7 +91,7 @@ export const POST = async (req: NextRequest) => {
      tgl_mulai_sewa: validatedFields.data.tgl_mulai_sewa,
      tgl_selesai_sewa: validatedFields.data.tgl_selesai_sewa,
      deskripsi: validatedFields.data.deskripsi,
-     url_foto: url
+ 
     
       }
     })

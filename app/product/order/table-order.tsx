@@ -13,14 +13,14 @@ const TransaksiForm = () => {
         deskripsi: string;
         kendaraan_plat: string;
         customer_id: string;
-        url_foto: File | null;
+        
     }>({
         tgl_mulai_sewa: "",
         tgl_selesai_sewa: "",
         deskripsi: "",
         kendaraan_plat: "",
         customer_id: "",
-        url_foto: null,
+       
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
@@ -31,17 +31,7 @@ const TransaksiForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0];
-            if (file instanceof File) {
-                setFormData({ ...formData, url_foto: file });
-            } else {
-                setErrors({ ...errors, url_foto: "Invalid file format" });
-                console.log(errors)
-            }
-        }
-    };
+
     
 
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -59,11 +49,6 @@ const TransaksiForm = () => {
             formDataToSend.append("deskripsi", formData.deskripsi);
             formDataToSend.append("kendaraan_plat", formData.kendaraan_plat);
             formDataToSend.append("customer_id", formData.customer_id);
-            if (formData.url_foto instanceof File) {
-                formDataToSend.append("url_foto", formData.url_foto);
-            } else {
-                throw new Error("Invalid file format");
-            }
     
             const response = await fetch("/api/transaction", {
                 method: "POST",
@@ -78,7 +63,7 @@ const TransaksiForm = () => {
                     deskripsi: "",
                     kendaraan_plat: "",
                     customer_id: "",
-                    url_foto: null,
+                 
                 });
                 setErrors({});
             } else {
@@ -244,24 +229,7 @@ const TransaksiForm = () => {
                 <div id="deskripsi-error" aria-live="polite" aria-atomic="true">
                     <p className="mt-2 text-sm text-red-500">{errors.deskripsi}</p>
                 </div>
-
-                <div className="mb-5">
-                    <label htmlFor="url_foto" className="block text-sm font-medium text-gray-900">
-                        URL Foto
-                    </label>
-                    <input
-                        type="file"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        name="url_foto"
-                        id="url_foto"
-                        placeholder="Upload Foto"
-                        onChange={handleFileChange}
-                    />
-
-                    <div id="url_foto-error" aria-live="polite" aria-atomic="true">
-                        <p className="mt-2 text-sm text-red-500">{errors.url_foto}</p>
-                    </div>
-                </div>
+                
 
                 <div id="message-error" aria-live="polite" aria-atomic="true">
                     <p className="mt-2 text-sm text-red-500">{errors.message}</p>

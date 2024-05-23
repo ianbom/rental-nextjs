@@ -21,7 +21,6 @@ export const getTransaksi = async (query: string, currentPage: number) => {
           tgl_mulai_sewa: true,
           tgl_selesai_sewa: true,
           deskripsi: true,
-          url_foto: true,
           createdAt: true,
           updatedAt: true,
         },

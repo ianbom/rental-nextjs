@@ -158,21 +158,6 @@ const TransaksiForm = () => {
                     </div>
                 </div>
 
-                <div className="mb-5">
-                    <label htmlFor="url_foto" className="block text-sm font-medium text-gray-900">
-                        URL Foto
-                    </label>
-                    <input
-                        type="file"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        name="url_foto"
-                        id="url_foto"
-                        placeholder="Upload Foto"
-                    />
-                    <div id="url_foto-error" aria-live="polite" aria-atomic="true">
-                        <p className="mt-2 text-sm text-red-500">{state?.Error?.url_foto}</p>
-                    </div>
-                </div>
 
                 <div id="message-error" aria-live="polite" aria-atomic="true">
                     <p className="mt-2 text-sm text-red-500">{state?.message}</p>
