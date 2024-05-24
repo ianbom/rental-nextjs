@@ -22,7 +22,7 @@ const TransaksiForm = () => {
                 if (vehicleTypes) {
                     const options = vehicleTypes.map((kendaraan) => ({
                         value: kendaraan.plat,
-                        label: kendaraan.plat
+                        label: kendaraan.merk
                     }));
                     setJenisKendaraanOptions(options);
                 }
@@ -74,7 +74,7 @@ const TransaksiForm = () => {
                             <option value="">Pilih Plat Kendaraan </option>
                             {jenisKendaraanOptions.map((option) => (
                                 <option key={option.value} value={option.value}>
-                                    {option.label}
+                                    {option.label} - {option.value}
                                 </option>
                             ))}
                         </select>
@@ -99,7 +99,7 @@ const TransaksiForm = () => {
                             <option value="">Pilih Nama Anda</option>
                             {namaCustomerOption.map((option) => (
                                 <option key={option.value} value={option.value}>
-                                    {option.label}
+                                    {option.label} 
                                 </option>
                             ))}
                         </select>

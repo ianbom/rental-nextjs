@@ -42,8 +42,8 @@ const KendaraanTable = async ({
                         <td className="py-3 px-6">{kendaraan.jenis.jenis || 'No Type'}</td>
                         <td className="py-3 px-6">{kendaraan.bahan_bakar}</td>
                         <td className="py-3 px-6">{kendaraan.cc}</td>
+                        <td className="py-3 px-6">{formatCurrency(kendaraan.harga_sewa)}</td>
 
-                       
                         <td className="py-3 px-6">{kendaraan.status ? 'Tersedia' : 'Tidak Tersedia'}</td>
                         <td className="py-3 px-6">
                             <div className="flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ const KendaraanTable = async ({
                         <td className="py-3 px-6">{formatDate(kendaraan.createdAt.toString())}</td>
                         <td className="flex justify-center gap-1 py-3">
                             <EditButton id="" />
-                            <ButtonDeleteKendaraan plat={kendaraan.plat}/>
+                            <ButtonDeleteKendaraan plat={kendaraan.plat} />
                         </td>
                     </tr>
                 )

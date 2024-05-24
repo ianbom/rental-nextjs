@@ -19,6 +19,7 @@ const SignIn = () => {
       console.log('User signed in successfully:', res);
       setEmail('');
       setPassword('');
+      
       if (users?.email == "ianalebom@gmail.com") {
         router.push('/admin')
       }

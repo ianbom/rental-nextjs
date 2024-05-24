@@ -21,14 +21,19 @@ export const fetchCustomer = async () => {
   export const fetchVehiclePlat = async () => {
     try {
       const kendaraanPlat = await prisma.kendaraan.findMany({
-        select: { plat: true, merk: true } 
+        where: {
+          status: true, 
+        },
+        select: {
+          plat: true,
+          merk: true,
+        },
       });
       return kendaraanPlat;
     } catch (error) {
       console.log(error);
       return null;
     }
-    
   };
 
   const TransaksiSchema = z.object({
