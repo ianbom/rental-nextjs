@@ -9,9 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">About Us</h3>
             <p className="text-sm leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              hendrerit, urna id efficitur bibendum, velit magna bibendum ex, a
-              commodo sapien nunc quis augue.
+              Discover the Ultimate Freedom of Travel with Our Top-Quality Vehicle Rentals! Whether youre planning a weekend getaway, a cross-country adventure, or simply need a reliable car for your daily errands, we have the perfect vehicle to suit your needs. Our extensive fleet of cars, SUVs, and vans are meticulously maintained and ready to take you wherever you need to go in comfort and style. Enjoy the convenience of easy online booking, competitive pricing, and exceptional customer service every step of the way. With us, your journey is our priority. Experience hassle-free rentals and make every trip memorable. Rent your dream vehicle today and hit the road with confidence!
             </p>
           </div>
           <div>
@@ -46,7 +44,7 @@ const Footer = () => {
         </div>
         <div className="mt-8 md:mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm">
-            &copy; {new Date().getFullYear()} My Website. All rights reserved.
+            &copy; {new Date().getFullYear()} IanBom Website. All rights reserved.
           </div>
           <div className="mt-4 md:mt-0">
             <ul className="flex space-x-4">

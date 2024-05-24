@@ -1,9 +1,21 @@
 "use client";
 import Link from "next/link";
-import { FaHome, FaInfoCircle, FaAddressBook, FaCar } from "react-icons/fa";
-import { LogoutButton } from "../admin/sign-out-button";
+import { FaHome, FaInfoCircle, FaAddressBook, FaCar, FaTimes, FaUserCircle } from "react-icons/fa";
+import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [user] = useAuthState(auth);
+  const router = useRouter();
+  
+  if (!user){ 
+    router.push('/sign-in')
+  }
+
   return (
     <>
       <nav className="bg-gray-800 fixed w-full z-10">
@@ -52,15 +64,46 @@ const Navbar = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-4 flex items-center md:ml-6">
-                
-                  <LogoutButton /> 
+
+                <button
+                  className="flex items-center justify-center rounded-full overflow-hidden w-10 h-10 bg-gray-200"
+                  onClick={() => setShowProfileModal(!showProfileModal)}
+                >
+                  
+                  <FaUserCircle className="text-gray-700 w-full h-full" />
                  
+                </button>
+
               </div>
             </div>
           </div>
         </div>
       </nav>
       <div className="pt-16"></div>
+
+      {/* Modal Profil */}
+      {showProfileModal && (
+        <div className="fixed top-0 right-0 z-50 m-4">
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg relative">
+            <button
+              className="absolute top-1 right-1 text-white hover:text-red-500"
+              onClick={() => setShowProfileModal(false)}
+            >
+              <FaTimes />
+            </button>
+            <h2 className="text-lg font-bold text-white mb-2">Profile</h2>
+            {/* Konten modal profil */}
+            <p className="text-gray-400 mb-2">{user?.email}</p>
+            {/* Tambahkan konten lain yang diperlukan */}
+            <button
+              className="mt-2 w-full py-1 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
+              onClick={() => setShowProfileModal(false)}
+            >
+              <button onClick={() => signOut(auth) }> Logout</button>
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

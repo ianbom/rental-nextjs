@@ -111,8 +111,8 @@ export const saveCustomer = async (prevSate:any, formData: FormData) => {
             message: "Failed create Customer"
         }
     }
-    revalidatePath("/customer"), 
-    redirect("/customer")
+    revalidatePath("/product/motor"), 
+    redirect("/product/motor")
 };
 
 

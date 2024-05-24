@@ -79,7 +79,7 @@ const EditPegawai = () => {
     <div>
       <h1 className="mb-5 text-2xl font-bold">Edit Pegawai</h1>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <div className="mb-5">
               <label htmlFor="nama" className="block text-sm font-medium text-white-900">
@@ -95,7 +95,7 @@ const EditPegawai = () => {
                 required
               />
               <div id="nama-error" aria-live="polite" aria-atomic="true">
-                <p className="mt-2 text-sm text-red-500">{}</p>
+                <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ const EditPegawai = () => {
                 required
               />
               <div id="alamat-error" aria-live="polite" aria-atomic="true">
-                <p className="mt-2 text-sm text-red-500">{}</p>
+                <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ const EditPegawai = () => {
                 required
               />
               <div id="umur-error" aria-live="polite" aria-atomic="true">
-                <p className="mt-2 text-sm text-red-500">{}</p>
+                <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
 
@@ -151,7 +151,7 @@ const EditPegawai = () => {
                 required
               />
               <div id="no_hp-error" aria-live="polite" aria-atomic="true">
-                <p className="mt-2 text-sm text-red-500">{}</p>
+                <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
 
@@ -169,18 +169,20 @@ const EditPegawai = () => {
                 required
               />
               <div id="gaji-error" aria-live="polite" aria-atomic="true">
-                <p className="mt-2 text-sm text-red-500">{}</p>
+                <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Update
-        </button>
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5"
+          >
+            Update
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -70,6 +70,6 @@ export const fetchCustomer = async () => {
       return { message: "Failed to create Transaksi" };
     }
   
-    revalidatePath("/transaksi/create");
-    redirect("/transaksi/create");
+    revalidatePath("/product/motor");
+    redirect("/product/motor");
   };

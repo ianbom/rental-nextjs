@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect } from 'react'
-import CustomerForm from './create-table'
+
 import Navbar from '../navbar'
 import Footer from '../footer'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/app/firebase/config';
+import CustomerForm from '@/app/customer-components/customer-create';
 
 const CustomerPageClient = () => {
   const [user, loading] = useAuthState(auth);
@@ -14,7 +15,7 @@ const CustomerPageClient = () => {
   useEffect(() => {
     if (!loading && !user) {
       router.push('/sign-in');
-    } 
+    }
   }, [loading, user, router]);
 
   if (loading) {
@@ -28,7 +29,9 @@ const CustomerPageClient = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="max-w-md mx-auto mt-20 mb-20">
+      <div className="max-w-md mx-auto mt-24 mb-24">
+
+        <h1 className="text-2xl text-center mb-4">Silahkan Mengisi Data Diri Anda</h1>
         <CustomerForm />
       </div>
       <Footer />

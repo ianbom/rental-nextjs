@@ -1,8 +1,8 @@
 "use client";
 import React from 'react'
-import TransaksiForm from './table-order'
 import Navbar from '../navbar';
 import Footer from '../footer';
+import TransaksiForm from '@/app/transaksi-components/transaksi-create';
 
 const Order = () => {
   return (
