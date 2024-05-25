@@ -12,9 +12,9 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
   
-  if (!user){ 
-    router.push('/sign-in')
-  }
+  // if (!user){ 
+  //   router.push('/sign-in')
+  // }
 
   return (
     <>

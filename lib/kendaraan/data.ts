@@ -40,6 +40,39 @@ export const getKendaraan = async (query: string, currentPage: number) => {
     }
 }
 
+export const getKendaraanByPlat = async (plat: string) => {
+  try {
+    const kendaraan = await prisma.kendaraan.findUnique({
+      where: { plat },
+      select: {
+        plat: true,
+        merk: true,
+        warna: true,
+        tahun: true,
+        bahan_bakar: true,
+        cc: true,
+        harga_sewa: true,
+        status: true,
+        createdAt: true,
+        jenis: { select: { jenis: true } },
+        foto: { select: { image: true } },
+      },
+    });
+
+    if (!kendaraan) {
+      throw new Error('Kendaraan not found');
+    }
+
+    return kendaraan;
+  } catch (error) {
+    throw new Error('Failed to find data Kendaraan');
+  }
+};
+
+
+  
+
+
 // export const fetchVehicleTypes = async () => {
 //     const vehicleTypes = await prisma.jenis.findMany({
 //       select: { id: true, jenis: true } 

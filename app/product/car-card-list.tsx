@@ -8,6 +8,7 @@ import Image from "next/image";
 import { log } from "console";
 import Search from "../admin/search";
 import TransaksiForm from "../transaksi-components/transaksi-create";
+import Link from "next/link";
 
 interface Kendaraan {
   plat: string;
@@ -98,14 +99,17 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
                 <h1 className="text-sm font-semibold">{kendaraan.status ? 'Tersedia' : 'Tidak Tersedia'}</h1>
               </div>
               {kendaraan.status && (
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded shadow-md dark:bg-gray-800">
-                  Pesan
-                </button>
+                <Link href={`/product/order`} passHref>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded shadow-md dark:bg-gray-800">
+                    Pesan coy
+                  </button>
+                </Link>
               )}
             </div>
             <div className="flex flex-col justify-between">
               <div>
-                <h3 className="text-lg font-semibold">{kendaraan.merk}</h3>
+                <Link href={`/product/motor/show/${kendaraan.plat}`}>
+                  <h3 className="text-lg font-semibold">{kendaraan.merk}</h3></Link>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   {kendaraan.plat}
                 </p>

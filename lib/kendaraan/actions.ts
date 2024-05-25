@@ -84,6 +84,64 @@ export const addKendaraan = async (prevState: any, formData: FormData) => {
   redirect('/admin/vechile');
 };
 
+export const updateKendaraan = async (prevState: any, formData: FormData) => {
+  console.log(formData);
+  const validatedFields = KendaraanSchema.safeParse({
+    plat: formData.get('plat'),
+    merk: formData.get('merk'),
+    warna: formData.get('warna'),
+    tahun: formData.get('tahun'),
+    bahan_bakar: formData.get('bahan_bakar'),
+    cc: Number(formData.get('cc')),
+    harga_sewa: Number(formData.get('harga_sewa')),
+    status: formData.get('status') === 'aktif',
+
+  });
+
+  if (!validatedFields.success) {
+    return { Error: validatedFields.error.flatten().fieldErrors };
+  }
+
+  try {
+    const updatedKendaraan = await prisma.kendaraan.update({
+      where: {
+        plat: formData.get('plat') as string, // Ubah ini sesuai dengan kunci unik yang digunakan
+      },
+      data: validatedFields.data,
+    });
+
+    const images = formData.getAll('images') as File[];
+    if (images.length > 0) {
+      const validatedImages = images.filter((file) => {
+        return file.size > 0 && file.type.startsWith('image/') && file.size < 4000000;
+      });
+
+      const uploadedImages = await Promise.all(
+        validatedImages.map(async (file) => {
+          const { url } = await put(file.name, file, { access: 'public', multipart: true });
+          return url;
+        })
+      );
+
+      await Promise.all(
+        uploadedImages.map(async (imageUrl) => {
+          await prisma.foto.create({
+            data: {
+              title: '', // Isi dengan judul yang sesuai
+              image: imageUrl,
+              kendaraan_plat: updatedKendaraan.plat,
+            },
+          });
+        })
+      );
+    }
+  } catch (error: any) {
+    return { error: 'Failed update kendaraan', errorMessage: error.message };
+  }
+
+  revalidatePath('/admin/vechile');
+  redirect('/admin/vechile');
+};
 
 
 

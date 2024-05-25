@@ -17,7 +17,6 @@ const CardPage = ({
     return (
         <>
             <Navbar />
-
             <CarCardList query={query} currentPage={currentPage} />
             <Footer />
         </>

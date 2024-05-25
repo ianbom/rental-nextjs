@@ -5,6 +5,7 @@ import { formatCurrency, formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Search from "@/app/admin/search";
 import { DayPickerProvider } from 'react-day-picker';
+import Link from "next/link";
 
 interface Kendaraan {
   plat: string;
@@ -95,9 +96,11 @@ const CarCardList = ({ query, currentPage }: { query: string; currentPage: numbe
                 <h1 className="text-sm font-semibold">{kendaraan.status ? 'Tersedia' : 'Tidak Tersedia'}</h1>
               </div>
               {kendaraan.status && (
+                <Link href={`/product/motor/show/${kendaraan.plat}`} passHref>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded shadow-md dark:bg-gray-800">
                   Pesan
                 </button>
+              </Link>
               )}
             </div>
             <div className="flex flex-col justify-between">

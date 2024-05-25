@@ -6,7 +6,6 @@ import type { Contact } from "@prisma/client";
 
 const UpdateForm = ({ contact }: { contact: Contact }) => {
   const UpdateContactWithId = updateContact.bind(null, contact.id);
-
   const [state, formAction] = useFormState(UpdateContactWithId, null)
 
   return (
