@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"; // impor prisma dari file lib/prisma.ts
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { put } from "@vercel/blob";
+import { log } from 'console';
 
 
 const KendaraanSchema = z.object({
@@ -84,19 +85,14 @@ export const addKendaraan = async (prevState: any, formData: FormData) => {
   redirect('/admin/vechile');
 };
 
-export const updateKendaraan = async (prevState: any, formData: FormData) => {
-  console.log(formData);
-  const validatedFields = KendaraanSchema.safeParse({
-    plat: formData.get('plat'),
-    merk: formData.get('merk'),
-    warna: formData.get('warna'),
-    tahun: formData.get('tahun'),
-    bahan_bakar: formData.get('bahan_bakar'),
-    cc: Number(formData.get('cc')),
-    harga_sewa: Number(formData.get('harga_sewa')),
-    status: formData.get('status') === 'aktif',
+const KendaraanSchemaNew = z.object({
+  plat: z.string().min(3),
+  harga_sewa: z.preprocess(val => Number(val), z.number().positive()),
+  status: z.preprocess(val => val === 'true', z.boolean()),
+});
 
-  });
+export const updateKendaraan = async (plat: string, prevState: any, formData: FormData) => {
+  const validatedFields = KendaraanSchemaNew.safeParse(Object.fromEntries(formData.entries()));
 
   if (!validatedFields.success) {
     return { Error: validatedFields.error.flatten().fieldErrors };
@@ -104,39 +100,15 @@ export const updateKendaraan = async (prevState: any, formData: FormData) => {
 
   try {
     const updatedKendaraan = await prisma.kendaraan.update({
-      where: {
-        plat: formData.get('plat') as string, // Ubah ini sesuai dengan kunci unik yang digunakan
+      where: { plat },
+      data: {
+        plat: validatedFields.data.plat,
+        status: validatedFields.data.status,
+        harga_sewa: validatedFields.data.harga_sewa,
       },
-      data: validatedFields.data,
     });
-
-    const images = formData.getAll('images') as File[];
-    if (images.length > 0) {
-      const validatedImages = images.filter((file) => {
-        return file.size > 0 && file.type.startsWith('image/') && file.size < 4000000;
-      });
-
-      const uploadedImages = await Promise.all(
-        validatedImages.map(async (file) => {
-          const { url } = await put(file.name, file, { access: 'public', multipart: true });
-          return url;
-        })
-      );
-
-      await Promise.all(
-        uploadedImages.map(async (imageUrl) => {
-          await prisma.foto.create({
-            data: {
-              title: '', // Isi dengan judul yang sesuai
-              image: imageUrl,
-              kendaraan_plat: updatedKendaraan.plat,
-            },
-          });
-        })
-      );
-    }
-  } catch (error: any) {
-    return { error: 'Failed update kendaraan', errorMessage: error.message };
+  } catch (error) {
+    return { message: 'Failed to update kendaraan' };
   }
 
   revalidatePath('/admin/vechile');
@@ -242,3 +214,22 @@ export const fetchVehicleTypes = async () => {
       return null;
   }
 };
+
+
+export const deleteVechile = async (
+  plat: string
+  ) => {
+  try {
+      await prisma.kendaraan.delete({ 
+          where: {plat}
+      })
+  } catch (error) {
+    console.log(error)
+      return {
+          message: "Failed delete conatct"
+      } ;
+     
+  }
+  revalidatePath("/admin/vechile")
+
+}

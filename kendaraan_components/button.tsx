@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { IoAddSharp, IoArrowForward, IoPencil, IoTrashOutline } from "react-icons/io5";
 import Create from '@/image-components/create-image';
+import { deleteVechile } from "@/lib/kendaraan/actions";
 
 
 
@@ -148,3 +149,16 @@ export const SubmitTransaksiButton = ({ Label }: { Label: string }) => {
         </button>
     );
 };
+
+export const DeleteKendaraanNewButton = ({ plat }: { plat: string }) => {
+    const DeleteKendaraanPlat = deleteVechile.bind(null, plat);
+    return (
+        <form action={DeleteKendaraanPlat}>
+            <button
+                className="rounded-sm text-sm border p-1 hover:bg-gray-100">
+                <IoTrashOutline size={20} />
+            </button>
+        </form>
+
+    )
+}

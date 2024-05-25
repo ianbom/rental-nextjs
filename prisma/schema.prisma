@@ -55,9 +55,9 @@ model Kendaraan {
 
 model Transaksi { 
   transaksiId String @id @default(cuid())
-  kendaraan Kendaraan @relation(fields: [kendaraan_plat], references: [plat])
+  kendaraan Kendaraan @relation(fields: [kendaraan_plat], references: [plat], onDelete: Cascade, onUpdate: Cascade)
   kendaraan_plat String
-  customer Customer  @relation(fields: [customer_id], references: [id])
+  customer Customer  @relation(fields: [customer_id], references: [id], onDelete: Cascade)
   customer_id String
   tgl_mulai_sewa DateTime
   tgl_selesai_sewa DateTime

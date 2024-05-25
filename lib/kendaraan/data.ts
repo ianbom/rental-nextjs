@@ -54,6 +54,8 @@ export const getKendaraanByPlat = async (plat: string) => {
         harga_sewa: true,
         status: true,
         createdAt: true,
+        updatedAt: true, // Tambahkan properti updatedAt
+        jenisKendaraan: true, // Tambahkan properti jenisKendaraan
         jenis: { select: { jenis: true } },
         foto: { select: { image: true } },
       },

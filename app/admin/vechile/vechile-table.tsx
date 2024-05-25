@@ -7,7 +7,7 @@ import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@
 import Image from "next/image";
 import Link from 'next/link';
 import { EditKendaraanButton } from "./create/button";
-
+import { DeleteKendaraanNewButton } from "@/kendaraan_components/button";
 
 
 export const DeleteButton = ({ plat }: { plat: string }) => {
@@ -131,7 +131,7 @@ const VechileTable = ({ query, currentPage }: { query: string; currentPage: numb
             <TableCell>
               <div className="flex justify-center">
                 <EditKendaraanButton plat={kendaraan.plat} />
-                <DeleteButton plat={kendaraan.plat} />
+                <DeleteKendaraanNewButton plat={kendaraan.plat} />
               </div>
             </TableCell>
           </TableRow>
