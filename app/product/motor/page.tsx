@@ -3,6 +3,7 @@ import React from 'react'
 import Navbar from '../navbar'
 import CarCardList from '../car-card-list';
 import Footer from '../footer';
+import { CardVechNew } from '@/components/component/card-vech-new';
 
 
 const CardPage = ({
@@ -17,7 +18,7 @@ const CardPage = ({
     return (
         <>
             <Navbar />
-            <CarCardList query={query} currentPage={currentPage} />
+            <CardVechNew query={query} currentPage={currentPage} />
             <Footer />
         </>
     )

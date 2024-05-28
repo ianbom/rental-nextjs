@@ -76,18 +76,18 @@ const EditPegawai = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1 className="mb-5 text-2xl font-bold">Edit Pegawai</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
+    <div className="flex justify-center items-center mt-20">
+      <div className="max-w-3xl w-full">
+        <h1 className="mb-5 text-2xl font-bold text-center">Edit Pegawai</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="mb-5">
-              <label htmlFor="nama" className="block text-sm font-medium text-white-900">
+              <label htmlFor="nama" className="block text-sm font-medium text-white-700">
                 Nama
               </label>
               <input
                 type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3"
                 name="nama"
                 id="nama"
                 value={formData.nama}
@@ -100,12 +100,12 @@ const EditPegawai = () => {
             </div>
 
             <div className="mb-5">
-              <label htmlFor="alamat" className="block text-sm font-medium text-white-900">
+              <label htmlFor="alamat" className="block text-sm font-medium text-white-700">
                 Alamat
               </label>
               <input
                 type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3"
                 name="alamat"
                 id="alamat"
                 value={formData.alamat}
@@ -116,16 +116,14 @@ const EditPegawai = () => {
                 <p className="mt-2 text-sm text-red-500">{ }</p>
               </div>
             </div>
-          </div>
 
-          <div>
             <div className="mb-5">
-              <label htmlFor="umur" className="block text-sm font-medium text-white-900">
+              <label htmlFor="umur" className="block text-sm font-medium text-white-700">
                 Umur
               </label>
               <input
                 type="number"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3"
                 name="umur"
                 id="umur"
                 value={formData.umur}
@@ -138,12 +136,12 @@ const EditPegawai = () => {
             </div>
 
             <div className="mb-5">
-              <label htmlFor="no_hp" className="block text-sm font-medium text-white-900">
+              <label htmlFor="no_hp" className="block text-sm font-medium text-white-700">
                 No HP
               </label>
               <input
                 type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3"
                 name="no_hp"
                 id="no_hp"
                 value={formData.no_hp}
@@ -156,12 +154,12 @@ const EditPegawai = () => {
             </div>
 
             <div className="mb-5">
-              <label htmlFor="gaji" className="block text-sm font-medium text-white-900">
+              <label htmlFor="gaji" className="block text-sm font-medium text-white-700">
                 Gaji
               </label>
               <input
                 type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-3"
                 name="gaji"
                 id="gaji"
                 value={formData.gaji}
@@ -173,17 +171,17 @@ const EditPegawai = () => {
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex justify-end">
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5"
-          >
-            Update
-          </button>
-        </div>
-      </form>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

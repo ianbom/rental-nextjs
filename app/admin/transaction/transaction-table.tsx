@@ -55,7 +55,7 @@ const TransactionTable = ({ query, currentPage }: { query: string; currentPage: 
                     <TableHead className="hidden md:table-cell">Status</TableHead>
                     <TableHead className="hidden md:table-cell">Created_At</TableHead>
                     
-                    <TableHead className="hidden md:table-cell">Action</TableHead>
+
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -72,12 +72,7 @@ const TransactionTable = ({ query, currentPage }: { query: string; currentPage: 
                         <TableCell className="hidden md:table-cell">{transaction.deskripsi}</TableCell>
                         <TableCell className="hidden md:table-cell">{formatDate(transaction.createdAt.toString())}</TableCell>
 
-                        <TableCell>
-                            <div className="flex justify-center">
-                                <EditButton id="" />
-                                <DeleteButton id="" />
-                            </div>
-                        </TableCell>
+                
                     </TableRow>
                 ))}
             </TableBody>

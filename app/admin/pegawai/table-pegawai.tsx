@@ -2,27 +2,28 @@
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useRouter } from "next/navigation";
+import { IoPencil, IoTrashOutline } from "react-icons/io5";
+import Link from "next/link";
 
 interface EditButtonProps {
-    id: string;
-  }
-  
-  export const EditButton: React.FC<EditButtonProps> = ({ id }) => {
-    const router = useRouter();
-  
-    const handleEdit = () => {
-      router.push(`/admin/pegawai/${id}`);
-    };
-  
-    return (
-      <button
-        onClick={handleEdit}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Edit
-      </button>
-    );
+  id: string;
+}
+
+export const EditButton: React.FC<EditButtonProps> = ({ id }) => {
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push(`/admin/pegawai/${id}`);
   };
+
+  return (
+    <Link href={`/admin/pegawai/${id}`} className="rounded-sm text-sm border p-1 hover:bg-gray-100">
+      <IoPencil size={20} />
+    </Link>
+
+
+  );
+};
 
 interface DeletePegawaiButtonProps {
   id: string;
@@ -55,16 +56,10 @@ const DeletePegawaiButton = ({ id }: DeletePegawaiButtonProps) => {
   };
 
   return (
-    <div>
-      <button
-        onClick={handleDelete}
-        disabled={isLoading}
-        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-      >
-        {isLoading ? 'Menghapus...' : 'Hapus Pegawai'}
-      </button>
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-    </div>
+    <button onClick={handleDelete}
+    className="rounded-sm text-sm border p-1 hover:bg-gray-100">
+    <IoTrashOutline size={20} />
+</button>
   );
 };
 

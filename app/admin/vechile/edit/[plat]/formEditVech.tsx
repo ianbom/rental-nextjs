@@ -157,46 +157,7 @@ const FormEditKendaraanNew = ({ kendaraan }: { kendaraan: Kendaraan }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="mb-5">
-            <label htmlFor="jenis_kendaraan" className="block text-sm font-medium text-white-900">
-              Jenis Kendaraan
-            </label>
-            {jenisKendaraanOptions.length > 0 && (
-              <select
-                id="jenisKendaraan"
-                name="jenisKendaraan"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                required
-                defaultValue={kendaraan.jenisKendaraan}
-              >
-                <option value="">Pilih Jenis Kendaraan</option>
-                {jenisKendaraanOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            )}
-            <div id="jenis_kendaraan-error" aria-live="polite" aria-atomic="true">
-              <p className="mt-2 text-sm text-red-500">{}</p>
-            </div>
-          </div>
 
-          <div className="mb-5">
-            <label htmlFor="images" className="block text-sm font-medium text-white-900">
-              Foto Kendaraan
-            </label>
-            <input
-              type="file"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              name="images"
-              id="images"
-              multiple
-              accept="image/*"
-            />
-          </div>
-        </div>
 
         <div className="flex justify-center mb-5 ">
           <div>

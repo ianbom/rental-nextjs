@@ -5,7 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon, VercelLogo, VehicleIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { useState } from 'react';
-import { FaInfoCircle, FaTimes } from 'react-icons/fa';
+import { FaInfoCircle, FaTimes, FaUserTie } from 'react-icons/fa';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { signOut } from 'firebase/auth';
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <VercelLogo className="h-4 w-4" /> Transaction
                   </NavItem>
                   <NavItem href="/admin/pegawai">
-                    <UsersIcon className="h-4 w-4" /> Pegawai
+                    <FaUserTie  className="h-4 w-4" /> Pegawai
                   </NavItem>
                 </nav>
               </div>

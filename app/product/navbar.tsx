@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaHome, FaInfoCircle, FaAddressBook, FaCar, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaAddressBook, FaCar, FaTimes, FaUserCircle, FaReceipt } from "react-icons/fa";
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
@@ -15,6 +15,15 @@ const Navbar = () => {
   // if (!user){ 
   //   router.push('/sign-in')
   // }
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      router.push('/sign-in');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <>
@@ -56,7 +65,7 @@ const Navbar = () => {
                     href="/product/order"
                     className="text-gray-300 hover:text-white px-3 py-2 rounded-md flex items-center transition duration-300"
                   >
-                    <FaAddressBook className="mr-2" />
+                    <FaReceipt  className="mr-2" />
                     Order
                   </Link>
                 </div>
@@ -99,7 +108,7 @@ const Navbar = () => {
               className="mt-2 w-full py-1 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
               onClick={() => setShowProfileModal(false)}
             >
-              <button onClick={() => signOut(auth) }> Logout</button>
+               <button onClick={handleLogout}>Logout</button>
             </button>
           </div>
         </div>
