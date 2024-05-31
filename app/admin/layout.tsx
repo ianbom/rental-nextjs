@@ -9,6 +9,7 @@ import { FaInfoCircle, FaTimes, FaUserTie } from 'react-icons/fa';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 
 
 // export const metadata = {
@@ -20,6 +21,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [showProfileModal, setShowProfileModal] = useState(false);
 
   const [user] = useAuthState(auth);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      router.push('/sign-in');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
 
   return (
     <html lang="en" className="h-full bg-gray-50">
@@ -89,7 +100,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 className="mt-2 w-full py-1 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
                 onClick={() => setShowProfileModal(false)}
               >
-                <button onClick={() => signOut(auth)}> Logout</button>
+                <button onClick={() => handleLogout()}> Logout</button>
               </button>
             </div>
           </div>

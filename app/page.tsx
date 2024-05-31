@@ -19,11 +19,13 @@ const SignIn = () => {
       console.log('User signed in successfully:', res);
       setEmail('');
       setPassword('');
-      
+
       if (users?.email == "ianalebom@gmail.com") {
         router.push('/admin')
+      } if (users?.email != "ianalebom@gmail.com" && users?.email != null) {
+        router.push('/product')
       }
-      
+
     } catch (error) {
       console.error('Error signing in user:', error);
     }

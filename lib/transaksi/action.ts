@@ -55,19 +55,33 @@ export const fetchCustomer = async () => {
       return { Error: validatedFields.error.flatten().fieldErrors };
     }
   
-
     try {
-      await prisma.transaksi.create({
-        data: {
-          kendaraan_plat: validatedFields.data.kendaraan_plat,
-          customer_id: validatedFields.data.customer_id,
-          tgl_mulai_sewa: validatedFields.data.tgl_mulai_sewa,
-          tgl_selesai_sewa: validatedFields.data.tgl_selesai_sewa,
-          deskripsi: validatedFields.data.deskripsi,
-        },
+      // Start a transaction
+      await prisma.$transaction(async (prisma) => {
+        // Create a new transaksi
+        await prisma.transaksi.create({
+          data: {
+            kendaraan_plat: validatedFields.data.kendaraan_plat,
+            customer_id: validatedFields.data.customer_id,
+            tgl_mulai_sewa: validatedFields.data.tgl_mulai_sewa,
+            tgl_selesai_sewa: validatedFields.data.tgl_selesai_sewa,
+            deskripsi: validatedFields.data.deskripsi,
+          },
+        });
+  
+        // Update the status of the kendaraan to false
+        await prisma.kendaraan.update({
+          where: {
+            plat: validatedFields.data.kendaraan_plat,
+          },
+          data: {
+            status: false,
+          },
+        });
       });
     } catch (error) {
-      return { message: "Failed to create Transaksi" };
+      console.error(error);
+      return { message: "Failed to create Transaksi and update Kendaraan status" };
     }
   
     revalidatePath("/product/motor");

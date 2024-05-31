@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useRouter } from "next/navigation";
 import { IoPencil, IoTrashOutline } from "react-icons/io5";
 import Link from "next/link";
+import { formatCurrency } from "@/lib/utils";
 
 interface EditButtonProps {
   id: string;
@@ -74,7 +75,7 @@ interface Pegawai {
   alamat: string;
   umur: number;
   no_hp: string;
-  gaji: string;
+  gaji: number;
 }
 
 const PegawaiTable: React.FC<PegawaiTableProps> = ({ query, currentPage }) => {
@@ -118,7 +119,7 @@ const PegawaiTable: React.FC<PegawaiTableProps> = ({ query, currentPage }) => {
               <TableCell className="hidden md:table-cell">{peg.alamat}</TableCell>
               <TableCell className="hidden md:table-cell">{peg.no_hp}</TableCell>
               <TableCell className="hidden md:table-cell">{peg.umur}</TableCell>
-              <TableCell className="hidden md:table-cell">{peg.gaji}</TableCell>
+              <TableCell className="hidden md:table-cell">{formatCurrency(peg.gaji)}</TableCell>
               <TableCell>
                 <div className="flex justify-center">
                   <EditButton id={peg.id} />

@@ -9,6 +9,7 @@ const Order = () => {
     <div>
       <Navbar/>
       <div className="max-w-md mx-auto mt-20 mb-20">
+      <h1 className="text-2xl text-center mb-4">Silahkan Mengisi Data Transaksi</h1>
       <TransaksiForm/>
       </div>
       <Footer/>
