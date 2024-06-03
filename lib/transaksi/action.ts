@@ -87,3 +87,17 @@ export const fetchCustomer = async () => {
     revalidatePath("/product/motor");
     redirect("/product/motor");
   };
+
+  export const doneTransaction = async (plat: string)=>{ 
+
+    try {
+      await prisma.kendaraan.update({ 
+        where: {plat},
+        data:{ 
+          status: true
+        }
+      })
+    } catch (error) {
+      
+    }
+  }

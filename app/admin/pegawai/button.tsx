@@ -51,7 +51,7 @@ export const CreatePegawai = () => {
     return (
         <Link
             href="/admin/pegawai/create"
-            className="inline-flex items-center space-x-1 text-white bg-blue-700 hover:bg-blue-800 px-5 py-[9px] rounded-sm text-sm">
+            className="inline-flex items-center space-x-1 text-white bg-blue-900 hover:bg-gray-800 px-5 py-[9px] rounded-sm text-sm">
 
             <IoAddSharp size={20} />
             Create

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'; // Import Link from next/link
+import Link from 'next/link';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ const SignIn = () => {
   const [users] = useAuthState(auth);
 
   const handleSignIn = async (e: any) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     try {
       const res = await signInWithEmailAndPassword(email, password);
       console.log('User signed in successfully:', res);
@@ -32,9 +32,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-bold text-white mb-6">Sign In</h2>
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold text-white mb-6 text-center">Sign In OKK</h2>
         <form onSubmit={handleSignIn}>
           <div className="mb-4">
             <label className="block text-gray-400 mb-2" htmlFor="email">
@@ -64,13 +64,13 @@ const SignIn = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
           >
             Sign In
           </button>
         </form>
-        {error && <p className="mt-4 text-red-500">{error.message}</p>}
-        <p className="mt-4 text-gray-400">
+        {error && <p className="mt-4 text-red-500 text-center">{error.message}</p>}
+        <p className="mt-4 text-gray-400 text-center">
           Dont have an account?
           <Link href="/sign-up" className="text-blue-500 hover:underline">
             Sign up

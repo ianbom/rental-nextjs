@@ -50,7 +50,7 @@ model Kendaraan {
   jenis Jenis @relation(fields: [jenisKendaraan], references: [id])
 
   foto Foto[]
-  transaksi Transaksi[]
+  transaksi Transaksi[] 
 }
 
 model Transaksi { 

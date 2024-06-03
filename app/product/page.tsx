@@ -60,7 +60,7 @@ const Section3 = ({
     }
     console.log(user)
     return (
-        <>
+        <>  
             <Navbar />
             <LandingPage />
             <Footer />
