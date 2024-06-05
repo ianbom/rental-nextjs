@@ -72,6 +72,46 @@ export const getKendaraanByPlat = async (plat: string) => {
 };
 
 
+export const countKendaraan = async () => {
+  try {
+      const count = await prisma.kendaraan.count();
+      return count;
+  } catch (error) {
+      throw new Error('Failed to count data Kendaraan');
+  }
+};
+
+export const countTransaksi = async () => {
+  try {
+      const count = await prisma.transaksi.count();
+      return count;
+  } catch (error) {
+      throw new Error('Failed to count data Transaksi');
+  }
+};
+
+export const countCustomer = async () => {
+  try {
+      const count = await prisma.customer.count();
+      return count;
+  } catch (error) {
+      throw new Error('Failed to count data Customer');
+  }
+};
+
+export const countPegawai = async () => {
+  try {
+      const count = await prisma.pegawai.count();
+      return count;
+  } catch (error) {
+      throw new Error('Failed to count data Pegawai');
+  }
+};
+
+
+
+
+
   
 
 

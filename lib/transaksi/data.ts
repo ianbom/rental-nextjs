@@ -47,3 +47,56 @@ export const getTransaksi = async (query: string, currentPage: number) => {
       throw new Error('Failed to find data Transaksi');
     }
   };
+
+  export const getTransaksiTotal = async () => {
+    try {
+      const transaksi = await prisma.transaksi.findMany({
+  
+        select: {
+          transaksiId: true,
+          kendaraan: {
+            select: {
+              plat: true,
+              harga_sewa: true,
+            },
+          },
+          customer: { select: { name: true } },
+          tgl_mulai_sewa: true,
+          tgl_selesai_sewa: true,
+          deskripsi: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      });
+  
+      // Menghitung total harga untuk setiap transaksi
+      const transaksiFull = transaksi.map((transaksi) => {
+        const durasi = Math.ceil(
+          (new Date(transaksi.tgl_selesai_sewa).getTime() -
+            new Date(transaksi.tgl_mulai_sewa).getTime()) /
+            (1000 * 60 * 60 * 24)
+        );
+        //const totalHarga = durasi * transaksi.kendaraan.harga_sewa;
+        const totalHarga = durasi * Number(transaksi.kendaraan.harga_sewa);
+
+        return {
+          ...transaksi,
+          total_harga: totalHarga,
+        };
+      });
+  
+      return transaksiFull;
+    } catch (error) {
+      throw new Error('Failed to find data Transaksi');
+    }
+  };
+
+  export const getTotalPendapatan = async () => {
+    try {
+        const transaksi = await getTransaksiTotal(); // or pass the currentPage if needed
+        const totalPendapatan = transaksi.reduce((total, transaksi) => total + transaksi.total_harga, 0);
+        return totalPendapatan;
+    } catch (error) {
+        throw new Error('Failed to calculate total revenue');
+    }
+};

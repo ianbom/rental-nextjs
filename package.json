@@ -8,11 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "seed" : "node "
+    "seed": "node "
   },
   "dependencies": {
     "@headlessui/react": "^2.0.3",
     "@hookform/resolvers": "^3.3.4",
+    "@nivo/line": "^0.87.0",
     "@prisma/client": "^5.14.0",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.7",

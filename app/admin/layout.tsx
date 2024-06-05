@@ -5,7 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon, VercelLogo, VehicleIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { useState } from 'react';
-import { FaInfoCircle, FaTimes, FaUserTie } from 'react-icons/fa';
+import { FaInfoCircle, FaTachometerAlt, FaTimes, FaUserTie } from 'react-icons/fa';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/app/firebase/config';
 import { signOut } from 'firebase/auth';
@@ -40,8 +40,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex h-full max-h-screen flex-col gap-2">
               <div className="flex h-[60px] items-center border-b px-5">
                 <Link className="flex items-center gap-2 font-semibold" href="/admin">
-                  <Logo />
-                  <span className="">Bom </span>
+                 
+                  <span className="">Bom Dashboard</span>
                 </Link>
               </div>
               <div className="flex-1 overflow-auto py-2">
@@ -57,6 +57,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </NavItem>
                   <NavItem href="/admin/pegawai">
                     <FaUserTie  className="h-4 w-4" /> Pegawai
+                  </NavItem>
+                  <NavItem href="/admin/dashboard">
+                    <FaTachometerAlt   className="h-4 w-4" /> Dashboard
                   </NavItem>
                 </nav>
               </div>
