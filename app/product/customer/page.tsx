@@ -31,7 +31,7 @@ const CustomerPageClient = () => {
       <Navbar />
       <div className="max-w-md mx-auto mt-24 mb-24">
 
-        <h1 className="text-2xl text-center mb-4">Silahkan Mengisi Data Diri Anda</h1>
+        <h1 className="text-2xl text-center mb-4">Silahkan Melengkapi Data Diri Anda</h1>
         <CustomerForm />
       </div>
       <Footer />
